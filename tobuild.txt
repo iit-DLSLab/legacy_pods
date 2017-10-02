@@ -1,0 +1,39 @@
+# list of subdirectories to build, one one each line.  Empty lines
+# and lines starting with '#' are ignored
+#eigen-pod
+bot_core_lcmtypes
+libbot
+
+# would like to use within ros:
+#octomap-pod
+
+# try to do without:
+occ-map
+
+common_utils
+#kinematics-utils
+
+#frsm
+#apriltags-pod
+
+
+
+
+# other
+#fovis
+#estimate-pose
+
+#isam
+
+
+# limited to the lcmtypes used there in:
+#visualization
+pronto-lcmtypes
+#vo_estimate
+#ori_lcmtypes
+#maps_server
+
+# will exclude for now
+#vicon
+#microstrain
+
