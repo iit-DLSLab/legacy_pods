@@ -13,7 +13,7 @@ occ-map
 common_utils
 #kinematics-utils
 
-#frsm
+frsm
 #apriltags-pod
 
 
