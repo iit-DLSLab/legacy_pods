@@ -1,0 +1,9 @@
+package dls;
+
+struct double_array_t
+{
+    int64_t  usec;
+    int32_t  size;
+    double   array[size];
+    string   name[size];
+}

@@ -1,0 +1,10 @@
+package dls;
+struct stance_t
+{
+    int64_t  utime;
+    boolean   LF;
+    boolean   RF;
+    boolean   LH;
+    boolean   RH;
+}
+
