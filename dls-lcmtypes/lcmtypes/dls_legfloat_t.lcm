@@ -1,0 +1,10 @@
+package dls;
+struct legfloat_t
+{
+    int64_t  utime;
+    double   LF;
+    double   RF;
+    double   LH;
+    double   RH;
+}
+
