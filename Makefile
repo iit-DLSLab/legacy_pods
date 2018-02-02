@@ -38,6 +38,9 @@ package: all
 	mv builddeb.deb legacy-pods_$(PACKAGE_VERSION).deb
 	rm -rf ./builddeb
 
+install: package
+	sudo dpkg -i legacy-pods_$(PACKAGE_VERSION).deb
+
 clean:
 	@for subdir in $(SUBDIRS); do \
 		echo "\n-------------------------------------------"; \
