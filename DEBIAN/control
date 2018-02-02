@@ -1,0 +1,13 @@
+Package: legacy-pods
+Source: legacy pods
+Version: 1.0.0
+Architecture: all
+Maintainer: Fabrizio Romanelli <fabrizio.romanelli@iit.it>
+Depends: python (>=2.3)
+Conflicts: legacy-pods
+Replaces: legacy-pods
+Section: libs
+Priority: extra
+Homepage: https://github.com/iit-DLSLab/legacy_pods
+Description: Library pods for DLS environment. This version is built over the following packages: bot_core_lcmtypes @ 0ccb7e6, common_utils @ e59577d, frsm @ 496ef4e, libbot @ a238668, occ-map @ b698af8.
+
