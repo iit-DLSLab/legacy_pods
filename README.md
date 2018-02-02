@@ -25,5 +25,5 @@ Additionally you can build & create a debian package:
 Installation
 ===============================================
 - Go to main folder
-- execute the following command: "sudo dpkg -i legacy-pods_<VER>.deb" where <VER> is the version number of the legacy pods.
+- execute the following command: "sudo dpkg -i legacy-pods_VER.deb" where VER is the version number of the legacy pods.
 
