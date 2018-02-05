@@ -32,8 +32,21 @@ package: all
 	mkdir --parents ./builddeb/usr/local
 	# Adjust package config paths
 	sed -i '/\(.*[^_]\|^\)prefix=/s/.*/prefix=\/usr\/local/' ./build/lib/pkgconfig/*.pc
+	# Adjust binaries paths
+	find ./build/bin -type f -print|xargs file|grep ASCII|cut -d: -f1|xargs sed -i 's|export PYTHONPATH=.*|export PYTHONPATH=/usr/local/lib/python2.7/dist-packages:/usr/local/lib/python2.7/site-packages:${PYTHONPATH}|g'
+	find ./build/bin -type f -print|xargs file|grep ASCII|cut -d: -f1|xargs sed -i 's|CLASSPATH=`.*|CLASSPATH=`PKG_CONFIG_PATH=PKG_CONFIG_PATH:/usr/local/lib/pkgconfig pkg-config --variable=classpath lcm-java`|g'
+	find ./build/bin -type f -print|xargs file|grep ASCII|cut -d: -f1|xargs sed -i 's|for d in.*|for d in . .. "/usr/local"; do|g'
+	# Adjust python paths
+	sed -i 's|BUILD_PREFIX=.*|BUILD_PREFIX=\x27/usr/local/\x27|g' ./build/lib/python2.7/dist-packages/bot_procman/*.py
+	sed -i 's|getBase.*|getBasePath(): return \x27/usr/local\x27|g' ./build/lib/python2.7/dist-packages/path_util/*.py
+	sed -i 's|getData.*|getDataPath(): return \x27/usr/local/data\x27|g' ./build/lib/python2.7/dist-packages/path_util/*.py
+	sed -i 's|getConfig.*|getConfigPath(): return \x27/usr/local/config\x27|g' ./build/lib/python2.7/dist-packages/path_util/*.py
+	sed -i 's|getModels.*|getModelsPath(): return \x27/usr/local/models\x27|g' ./build/lib/python2.7/dist-packages/path_util/*.py
 	cp -r ./build/* ./builddeb/usr/local
 	cp -r ./DEBIAN ./builddeb/
+	cp -r ./common_utils/eigen-utils/matlab/*.m ./builddeb/usr/local/matlab
+	# Adjust matlab paths
+	sed -i 's|path = \x27.*|path = \x27/usr/local/matlab\x27;|g' ./builddeb/usr/local/matlab/*.m
 	dpkg-deb --build builddeb
 	mv builddeb.deb legacy-pods_$(PACKAGE_VERSION).deb
 	rm -rf ./builddeb
